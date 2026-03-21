@@ -1,0 +1,40 @@
+---
+// src/components/Cell.astro
+interface Props {
+  student: string;
+  index: number;
+}
+
+const { student, index } = Astro.props;
+
+const isEmpty = student.type === 'empty';
+---
+
+<div class="flex flex-col items-center">
+  <div
+    class={`relative w-full aspect-[3/4] border border-[#5c3317]/40 bg-[#f7f0e6] shadow 
+    transition hover:scale-105 hover:shadow-xl
+    ${isEmpty ? 'opacity-40 pointer-events-none' : 'cursor-pointer'}`}
+    
+    data-index={index}
+  >
+    {
+      student.photo && !isEmpty ? (
+        <img
+          src={student.photo}
+          alt={student.name}
+          loading="lazy"
+          class="absolute inset-0 w-full h-full object-cover sepia-[0.3]"
+        />
+      ) : (
+        <div class="flex items-center justify-center h-full text-[#5c3317]/50 text-xs">
+          Sin foto
+        </div>
+      )
+    }
+  </div>
+
+  <div class="text-center text-[0.7rem] mt-1 truncate w-full font-[cursive]">
+    {isEmpty ? '\u00A0' : student.name}
+  </div>
+</div>

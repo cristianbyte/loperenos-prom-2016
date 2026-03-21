@@ -1,0 +1,25 @@
+---
+// src/components/Grid.astro
+import Cell from './Cell.astro';
+
+interface Props {
+  students: Array<{
+    name: string;
+    photo?: string;
+    type?: string;
+  }>;
+}
+
+const { students } = Astro.props;
+---
+
+<div class="flex-1 flex items-center justify-center p-3">
+  <div class="grid gap-2 w-full max-w-[1380px]
+              grid-cols-3 sm:grid-cols-5 lg:grid-cols-10">
+    
+    {students.map((s, i) => (
+      <Cell student={s} index={i} />
+    ))}
+    
+  </div>
+</div>
