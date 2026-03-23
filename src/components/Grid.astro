@@ -1,24 +1,14 @@
 ---
-// src/components/Grid.astro
+// Grid.astro — sin interface, sin re-tipado
 import Cell from './Cell.astro';
-
-interface Props {
-  students: Array<{
-    name: string;
-    photo?: string;
-    type?: string;
-  }>;
-}
 
 const { students } = Astro.props;
 ---
 
 <div class="flex items-center justify-center p-5 lg:p-10 flex-1">
   <div class="flex flex-wrap justify-center lg:gap-3 gap-1 md:gap-2 w-full max-w-[1380px] h-full">
-    
-    {students.map((s, i) => (
+    {students.map((s: { name: string; photo?: string; type: "student" | "empty"; }, i: number) => (
       <Cell student={s} index={i} />
     ))}
-    
   </div>
 </div>
