@@ -1,0 +1,17 @@
+---
+import StudentCard from '../islands/StudentCard.jsx';
+
+const { students } = Astro.props;
+---
+
+<main class="mx-auto flex w-full max-w-7xl flex-1 px-3 py-4 sm:px-4 sm:py-6 lg:px-6">
+  <section class="w-full">
+    <ul class="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+      {students.map((student: unknown, index: unknown) => (
+        <li>
+          <StudentCard client:idle student={student} index={index} />
+        </li>
+      ))}
+    </ul>
+  </section>
+</main>

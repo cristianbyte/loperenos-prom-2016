@@ -1,1 +1,17 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply min-h-screen bg-[#f0e6d3] text-[#3b1f0e] antialiased;
+  }
+
+  button {
+    font: inherit;
+  }
+}

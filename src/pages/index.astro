@@ -1,20 +1,15 @@
 ---
+import Gallery from '../components/Gallery.astro';
 import Header from '../components/Header.astro';
-import Grid from '../components/Grid.astro';
+import Layout from '../layouts/Layout.astro';
 import { STUDENTS } from '../data/students.js';
+import LightboxIsland from '../islands/LightboxIsland.jsx';
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Reencuentro Prom 2016</title>
-  </head>
-
-  <body class="bg-[#f0e6d3] text-[#3b1f0e] min-h-screen flex flex-col">
-    
+<Layout title="Reencuentro Prom 2016">
+  <div class="flex min-h-screen flex-col">
     <Header />
-
-    <Grid students={STUDENTS} />
-
-  </body>
-</html>
+    <Gallery students={STUDENTS} />
+    <LightboxIsland client:load students={STUDENTS} />
+  </div>
+</Layout>
